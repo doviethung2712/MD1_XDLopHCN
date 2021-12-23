@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xay Dung Lop Mo Ta Hinh Chu Nhat</title>
+</head>
+<body>
+<label>Chieu Cao<input type="text" id="height"></label>
+<label>Chieu Rong<input type="text" id="width"></label>
+<input type="button" onclick="kq()" value="HienThi">
+<input type="button" onclick="kq2()" value="HienThi2"> <br>
+<canvas id="myCancas" height="400px" width="600px" style="border: 1px solid black"></canvas>
+
+
+<script>
+
+
+    let arr = []
+
+
+    class Rectangle {
+        height;
+        width;
+        dem = 0;
+
+        constructor(height, width) {
+            this.height = height;
+            this.width = width;
+        }
+
+        veHCN(ctx) {
+
+            ctx.fillStyle = "red";
+            ctx.clearRect(0,0,600,400);
+            ctx.beginPath()
+            ctx.fillRect(10 + this.dem, 10 , this.width, this.height);
+            ctx.fill();
+            ctx.closePath();
+
+            //ctx.translate(this.height+50,this.width)
+            this.dem = this.dem + 50;
+        }
+
+        show() {
+
+            alert('helo')
+        }
+    }
+
+    function kq2() {
+
+        // arr1 = [[3,"he"],[1,"she"],[2,"me"]]
+        // arr2 = [[1,"co ay"],[2,"toi"],[3,"anh ay"],[4,"anh ay"]]
+        // tuNha = "she"
+        // for (let i = 0; i < arr1.length; i++) {
+        //    // console.log(i + " = " + arr2[i])
+        //     if (tuNha==arr1[i][1]){
+        //         for (let j = 0; j < arr2.length; j++) {
+        //            if (arr1[i][0]==arr2[j][0]){
+        //                console.log(tuNha + " = " + arr2[j][1])
+        //                break
+        //            }
+        //         }
+        //     }
+        //
+        // }
+        //veHcn2.veHCN(canvas)
+        veHcn.veHCN(canvas)
+
+    }
+
+    function kq() {
+        height = document.getElementById('height').value;
+        width = document.getElementById('width').value;
+
+        canvas = document.getElementById('myCancas').getContext("2d");
+        veHcn = new Rectangle(height, width)
+
+        veHcn.veHCN(canvas)
+
+        // console.log(veHcn.veHCN(canvas))
+        // veHcn.show()
+        // veHcn2 = new Rectangle(500, 300)
+
+
+    }
+
+
+
+
+</script>
+</body>
+</html>
