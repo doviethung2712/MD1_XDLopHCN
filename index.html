@@ -8,7 +8,9 @@
 <label>Chieu Cao<input type="text" id="height"></label>
 <label>Chieu Rong<input type="text" id="width"></label>
 <input type="button" onclick="kq()" value="HienThi">
-<input type="button" onclick="kq2()" value="HienThi2"> <br>
+<input type="button" onclick="kq2()" value="HienThi2">
+<p>DTHCN: <span id="dthcn"></span></p>
+<p>DTCV: <span id="cvhcn"></span></p> <br>
 <canvas id="myCancas" height="400px" width="600px" style="border: 1px solid black"></canvas>
 
 
@@ -33,7 +35,7 @@
             ctx.fillStyle = "red";
             ctx.clearRect(0,0,600,400);
             ctx.beginPath()
-            ctx.fillRect(10 + this.dem, 10 , this.width, this.height);
+            ctx.fillRect(10 + this.dem, 10 , this.width + 100, this.height +100);
             ctx.fill();
             ctx.closePath();
 
@@ -72,6 +74,16 @@
     function kq() {
         height = document.getElementById('height').value;
         width = document.getElementById('width').value;
+
+        height = parseInt(height);
+        width = parseInt(width)
+
+        dthcn = height*width;
+        cvhcn = ((height + width)*2);
+
+        document.getElementById('dthcn').innerHTML = dthcn;
+        document.getElementById('cvhcn').innerHTML = cvhcn;
+
 
         canvas = document.getElementById('myCancas').getContext("2d");
         veHcn = new Rectangle(height, width)
